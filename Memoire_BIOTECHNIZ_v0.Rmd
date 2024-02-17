@@ -1,0 +1,10 @@
+---
+title: "BIOTECHNIZ"
+output: 
+---
+
+
+```{r full code, include=FALSE}
+
+```
+
