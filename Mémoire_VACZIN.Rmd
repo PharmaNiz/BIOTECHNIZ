@@ -1,0 +1,5 @@
+---
+title: "Stratégies de gestion des chaînes d'approvisionnement pharmaceutiques en période de pandémie : Étude comparative d'une usine pharmaceutique en situation normale et en période d'épidémie: l'usine VACZIN"
+output: html_notebook
+---
+
