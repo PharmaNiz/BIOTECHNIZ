@@ -61,7 +61,7 @@ AQ_Time <-c(2 * 60)            #Durée de la demarche qualité en sortie de chai
 #On considère qu'il y a un nombre égal de patients par region
 
 NbrDeCentresLAC<-c(18)
-interarrival_time <- c(30 * 24 * 60 / NbrDeCentresLAC*4)#Minutes(4 fois par mois/1 par semaine)
+interarrival_time <- c(30 * 24 * 60 / NbrDeCentresLAC*4)#Minutes(4 fois par mois/1 par semaine) (a adapter en fonction de l'epidemio/demande)
 
 
 CustArr <- function() { interarrival_time}
@@ -73,23 +73,24 @@ NewCustArr <- function() { interarrival_time}
 QPC_PP <- c(round((30*DDM)/(12*NbrDeCentresLAC),digits=0)+1)
 QPC_PI <- c(round((30*New_DDM[1])/(12*NbrDeCentresLAC),digits=0)+1)
 
-# On rajoute un +1 car arrondi au minima, et on ne veut pas qu'un patient manque une dose.
-#Les 18 centres de lutte anti cancer se partagent les patients equitablement
+# On rajoute un +1 car arrondi à la valeur sup, et on ne veut pas qu'un patient manque une dose.
+#Les 18 centres de lutte anti cancer se partagent les patients equitablement (pour simplifier la simulation)
+#Pour plus de detail, coder 18 trajectoires pour les 18 centres avec des frequences d'arriver =/=, en fonction du nbr de cas par region
 #Donc les valeurs des seize ... = Prevalence/(Mois*18)))
 
 
 
-###### Fonction pour le forecast (à modifier selon vos besoins)
+###### Fonction pour le forecast (à modifier selon la prevision de demainde)
 
 MCNS<-mean(Cumul_Nizumab_Servi)  #MCNS = Mean Cumul Nizumab Servi
 
 Forecast <- function() {MCNS}                     ##Mounthly Forecast
 #####################################################################################
 # Définir l'environnement, les Ressources et Trajectoires
-VACZIN <- simmer()
+BIOTECHNIZ <- simmer()
 
 # Ajout des ressources
-VACZIN %>%
+BIOTECHNIZ %>%
   add_global("Inventaire Batchs", NumBatchs) %>%
   add_global("Début de Prod", 0) %>%
   add_global("Rework", 0) %>%
@@ -112,6 +113,7 @@ machines <-
 
 
 # Capacités de chaque machine (en nombre de batch traité par cycle)
+#pour l'instant se pasere sur la Daily Demande Moyenne
 ### Chercher dans la litterature de vrais chiffres si possible (scale up et autres articles )
 
 Capacites <- c(
@@ -130,6 +132,7 @@ Capacites <- c(
 )
 
 # Capacités de ligne d'attente pour chaque machine (nombre d'unités en attente)
+# A affiner avec la litterature
 Capacites_Ligne_Attente <- Capacites*2
 
 # Temps de cycle de chaque machine (en minutes par batch)
@@ -142,7 +145,9 @@ Temps_Cycle <- c(
   SAQ= AQ_Time
 )
 
-# Taux de rework pour chaque machine (en pourcentage)  # Produits nécessitant une reprise
+# Taux de rework pour chaque machine (en pourcentage)  
+# Produits nécessitant une reprise
+
 Rework <- c(
   M1 = 1,
   M2 = 2,
@@ -153,6 +158,7 @@ Rework <- c(
 )
 
 # Temps moyen de réparation (MTTR) pour chaque machine (en minutes)
+# A affiner avec les données de la littérature
 MTTR <- c(
   M1 = 110,
   M2 = 110,
@@ -163,27 +169,36 @@ MTTR <- c(
 
 
 # Temps moyen entre les pannes (MTBF) pour chaque machine (en heures*60 minutes)
+#A Affiner également
 MTBF <- c(
   M1 = 300,
   M2 = 250,
   M3 = 220,
   M4 = 180,
   M5 = 300,
-  SAQ = 0 )*60     #!! convertir les unités en minutes, S1 les gens de la qualité, si 0 envie de dormir alors 0 (ou alors un bon roulement d'equipe)
+  SAQ = 0 )*60     
+#!! convertir les unités en minutes, S1 les gens de la qualité, 
+#si 0 envie de dormir alors 0 (ou alors un bon roulement d'equipe)
+# Mettre un temps tres long pour le SAQ? 2/3 fois par semestre pour simuler des jours feriés et dimanches?
 
 
 
 for (i in seq_along(machines)) {
-  VACZIN %>% 
-    add_resource(machines[i], capacity = Capacites[i],queue_size = Capacites_Ligne_Attente[i], mon = TRUE)
-}
+  BIOTECHNIZ %>% 
+    add_resource(machines[i], 
+                 capacity = Capacites[i],
+                 queue_size = Capacites_Ligne_Attente[i],
+                 mon = TRUE)}
 
 
 
 ###############################################################
 # Trajectoire Patients
 
-#Les 18 centres se partagent les patients equitablement
+#En theorie il est possible de mettre 18 trajectoire pour les 18 centres
+#Ou une alternative plus precise
+#pour la v1, simple et efficace: 
+#Les 18 centres régionnaux se partagent les patients français equitablement
 #Donc les valeurs des seize ... = Prevalence/(Mois*18)
 
 t_Patients_Prevalents <- trajectory() %>%
@@ -192,13 +207,30 @@ t_Patients_Prevalents <- trajectory() %>%
   release("Nizumab", QPC_PP) %>%
   set_capacity("Nizumab", -QPC_PP,mod = "+")# Reduit le Stock de Nizumab de 1
 #Chiffre 1 pas adapté, on peut diviser cela en centre regionaux de cancer ou nombre de CHU
+
 t_Patients_Incidents <- trajectory() %>%
   seize("Nizumab", QPC_PI) %>%
   timeout(25)%>%    #Un time out un peu plus élevé pour l'ETP
   release("Nizumab", QPC_PI) %>%
   set_capacity("Nizumab", -QPC_PI, mod = "+")
 
-######## Trajectoire des Work Orders###########
+
+#ETP si Biotechniz recoit les patients un par un, en principe cela est compliqué
+
+#Cependant on peut ajouter un temps plus long pour:
+#representer le fait que pour les traitements des nouveaux patients,
+#on a pris le temps de mettre dans la commande
+#de la documentation ETP sur le Nizumab, sur la pathologie, un pillulier, = Kit complet pour le patient ...
+
+#Patients prevalents ont un traitement habituel, simple a recuperer, charger et transporter
+#Patients prevalents: traitement + Kit ETP et bonne observance, ce qui demande plus de temps a charger dans les camions...
+
+
+#ps: ici on parle en chargement de camions et non de visite à l'officine, donc les valeurs de 5 minutes et 25 minutes sont bien sous-estimés
+#affiner ces valeurs avec de la litterature et données réelles
+#pour la v1, prendre des chiffres moyens officinaux
+
+######## Trajectoire de la Ligne de Porduction###########
 
 t_Ligne_de_Prod <- trajectory() %>%
   set_global("Début de Prod", 1, mod = "+") %>%
@@ -312,7 +344,7 @@ t_Panne_M5 <- trajectory() %>%
 t_Restock_Batch <- trajectory() %>%
   branch(
     function()
-      get_global(VACZIN, "Inventaire Batchs") <= ROP,
+      get_global(BIOTECHNIZ, "Inventaire Batchs") <= ROP,
     continue = TRUE,
     trajectory() %>%
       set_global("Carnet de Commande", 1, mod = "+") %>%
@@ -325,7 +357,7 @@ t_Restock_Batch <- trajectory() %>%
 
 # Ajout des générateurs avec une fréquence d'observation réduite
 
-VACZIN %>%
+BIOTECHNIZ %>%
   add_generator("Ligne de Production", t_Ligne_de_Prod, Forecast ) %>%
   add_generator("CTRL des Stocks de Batch", t_Restock_Batch, function() {500}) %>%
   add_generator("Patients Prévalents", t_Patients_Prevalents, CustArr ) %>%
@@ -339,12 +371,12 @@ VACZIN %>%
 
 # Lancer la Simulation
 
-VACZIN %>% run(until = SimTime)
+BIOTECHNIZ %>% run(until = SimTime)
 
 # Stocker les Résultats en agrégeant les données
-Arrivals <- get_mon_arrivals(VACZIN)
-Ressources <- get_mon_resources(VACZIN)
-Attributes <- get_mon_attributes(VACZIN)
+Arrivals <- get_mon_arrivals(BIOTECHNIZ)
+Ressources <- get_mon_resources(BIOTECHNIZ)
+Attributes <- get_mon_attributes(BIOTECHNIZ)
 
 ###############################################
 ###############METRICS PATIENTS##############
