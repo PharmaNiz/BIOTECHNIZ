@@ -1,0 +1,22 @@
+### Métriques de performance pour l'analyse de la simulation :
+
+#### Performance opérationnelle :
+1. Taux de production : Mesure le nombre de produits fabriqués par unité de temps.
+2. Taux de service : Indique le pourcentage de demandes clients satisfaites dans les délais.
+3. Utilisation des ressources : Évalue l'efficacité d'utilisation des ressources telles que les machines et les travailleurs.
+4. Taux de disponibilité des machines : Mesure le pourcentage de temps pendant lequel les machines sont disponibles pour la production.
+5. Taux de rejet : Indique le pourcentage de produits défectueux ou rejetés par rapport à la production totale.
+
+#### Performance logistique :
+1. Stocks : Quantité de produits en stock à différents points de la chaîne d'approvisionnement.
+2. Rotation des stocks : Vitesse à laquelle les stocks sont utilisés et renouvelés.
+3. Temps de réapprovisionnement : Durée nécessaire pour reconstituer les stocks après épuisement.
+4. Temps de traitement des commandes : Délai entre la réception de la commande et la livraison du produit.
+5. Temps de transit : Durée nécessaire pour que les produits se déplacent d'un point à un autre de la chaîne d'approvisionnement.
+
+#### Performance client :
+1. Délai d'attente moyen : Temps moyen passé par les clients en attente de service.
+2. Taux de satisfaction client : Pourcentage de clients satisfaits du service reçu.
+3. Délai de livraison : Temps écoulé entre la commande et la réception des produits par le client.
+4. Précision des commandes : Pourcentage de commandes livrées conformément aux spécifications du client.
+5. Taux de retour : Pourcentage de produits retournés par les clients pour diverses raisons.

@@ -1,0 +1,101 @@
+---
+title: "Conception et Optimisation de l'Usine Biotechnologique BIOTECHNIZ® dans RStudio pour Répondre à la Demande Croissante de Ni-zumab :Production d'Ac Monoclonal Humanisé bispecifique Anti PD-1 + PD-L1 pour les Patients Français Atteints de NSCLC (=CPNPC) "
+
+output: 
+---
+
+
+```{r full code, include=FALSE}
+
+```
+
+Résumé
+
+Ce travail vise à comprendre la biotechnologie pharmaceutique et les processus de production pharmaceutique en simulant une usine fictive (BIOTECHNIZ®) de production d'anticorps monoclonaux bispecifiques humanisés fictifs appelé « Ni-zumab », ciblant le récepteur PD-1 et PD-L1.
+
+L'objectif étant d'assurer un approvisionnement suffisant en médicaments pour tous les patients français atteints de cancer du poumon non à petites cellules PD1+ (NSCLC_PD1+) traités par anti PD-1 et PD-L1, en minimisant les ruptures de stock et les temps d'attente. 
+
+La simulation est réalisée à l'aide de RStudio et de RSimmer, en prenant en compte les patients "Prévalents" et "Incidents", regroupés sous la responsabilité des 18 centres régionaux de lutte contre le cancer.
+
+
+
+Objectifs du travail
+
+1. Comprendre les processus de production biotechnologique des anticorps monoclonaux humanisés bispecifique (-zu-mab).
+2. Modéliser et simuler une usine fictive de production d'anticorps monoclonaux anti PD1 + PD-L1.
+3. Optimiser les processus de production pour répondre à la demande des patients français atteints de cancer du poumon non à petites cellules PD1+ (NSCLC_PD1+) en d'anticorps monoclonaux anti PD-1 + PD-L1 (Ni-zumab), tout en minimisant les coûts, les ruptures et les temps d'attente.
+
+
+Plan détaillé
+
+
+1. Introduction
+   - Epidémiologie des Cancers du poumon non à petites cellules (NSCLC) en France  (Il y aura des details dans la partie "Revue de littérature" dans tous les cas)
+ou 
+   - Production Pharma et Industrie   
+   
+   - Contexte et importance de la production pharmaceutique des anticorps monoclonaux.
+   - Objectifs de la recherche. 
+
+2. Revue de littérature
+- Importance dans le traitement des Cancers du poumon non à petites cellules (NSCLC) PD1+ en France 
+- Anticorps monoclonaux, bispecifiques, PD-1 et anti-PD1, PDL1 et anti PDL1, utilité de cibler les deux, utilité de le faire par le biais d'un IgG bi specifique plutot que par deuc monospé
+- Biotechnologie pharmaceutique : processus de production d'anticorps monoclonaux anti-PD1 : (Matériels, Méthodes, Réglementions)
+   - Simulation des processus de production pharmaceutique.
+
+3. Méthodologie
+   - Choix de RStudio et RSimmer pour la modélisation et la simulation.
+   - Description de BIOTECHNIZ, de ses composants (machines, assets, services, politique de prod, forecast, clients, batch et produit fini) et des processus de production.
+   - Définition des variables, des générateurs et des trajectoires pour la simulation.
+
+4. Modélisation de l'usine fictive
+   - Définition de l’environnement, des machines + service AQ, des capacités et des temps de cycle, du batch et du produit fini (Ni-zumab).
+(M1 : Bioréacteur ; M2 : Centrifugeuse, M3 : Colonne d’Affinité ; M4 : Système de Filtration Tangentielle ; M5 : Système de Remplissage Automatisé avec traçabilité Blockchain + S1-AQ : Service Assurance Qualité (Contrôle et libération des lots)
+   - Détermination des taux de rejet et des temps de réparation.
+   - Définition des patients "Prévalents" et "Incidents", du « Forecast » des commandes, de l’inventaire, ROP (ReOrderPoint) et ROQ (ReOrderQuantity)
+
+
+5. Simulation des processus de production
+   - Mise en place des trajectoires et générateurs pour la ligne de production, les patients, les contrôles, et les pannes.
+   - Exécution de la simulation pour une durée déterminée ( !! dépend aussi de la puissance de calcul de mon ordinateur portable !! )
+
+6. Résultats et analyses
+   - Analyse des performances de BIOTECHNIZ®.
+   - Évaluation de la capacité à répondre à la demande des patients français en Ni-zumab.
+   - Identification des goulets d'étranglement et des possibilités d'optimisation.
+
+7. Discussion
+   - Interprétation des résultats et comparaison avec les objectifs de recherche.
+   - Limitations de l'étude et suggestions pour des recherches futures.
+
+8. Conclusion
+   - Résumé des principales conclusions.
+   - Implications pour l'industrie pharmaceutique et la santé publique.
+   - Recommandations pour améliorer l'efficacité et la fiabilité des processus de production pharmaceutique.
+   
+9; Ouverture
+    -Ouverture sur le projet "Oun-umab":
+
+L'Entreprise BIOTECHNIZ, réinjecte ses bénéfices en R&D pour développer l' "Ou-numab". 
+
+L' "Oun-umab" est un bsmab humain fictif anti EFGR+CTLA4, le projet est centré modélisation des bsmab Ni-zumab et "Oun-mab", leur R&D, études et simulations d'activités/affinités/interractions + Formulation Galénique, (in silico pour le moment, limité par mon materiel personnel) ... et a pour but le developpement d'un produit unique le "Tetra-Nizou®". 
+
+
+Tetra-Nizou® = 
+[Ni-zumab (Bsmab anti PD-1 + PD-L1) + Oun-umab (Bsmab anti EFGR + CTLA4)]
+
+(sur le même modèle que Amoxicilline -> Amx + Acide Clavulanique = Augmentin®)
+    
+(ps: Nizumab est un IgG ici, cependant dans le projet de modelisation, R&D de bsmab, il sera possible de se diriger vers d'autres formes, notamment les IgA, qui peuvent etre intéressants car endogènes aux voies pulmonaires, de plus leur capacité de dimérisamtion permettrait de créer une immunothérapie tétravalente sans avoir à passer par la production de deux Ac.bispé. Apres d'un point de vu médical et commercial, créer une spécialité seul d'Ou-numab pourrait également être bénéfique)
+
+(pps: les IgA n'ont pas la meme PKPD que les IgG, y penser lors de l'etude R&D)
+
+(ppps: lors de l'étape de formulation et PK/PD, comparer la voie IV lente actuelle avec la possibilité de délivrer les IgG/A par aerosol, et de conditionner cela dans un pulverisateur type Ventoline, ce qui bénéficierais grandement au confort de soin des patients, l'observance et à la practicité de la PEC, en permettant une action locale (pulmonaire seulement) sur les cellules tumorales, et donc diminuerait les effets secondaires d'une action systemique)
+
+(p4s: Dans le cas des Aerosol, si delivrance en Officine, faire un point sur le transport, stockage et conditionnement, ainsi que l'ETP à mettre en oeuvre et le suivi des patients en ambulatoire plutot que dans les CH)
+
+(p5s: (python+++ pour apprendre d'avantage et me perfectionner hors RStudio))
+
+10. Références Bibliographiques 
+(Une vingtaine maximum environ)
+

@@ -1,0 +1,53 @@
+Memoire BIOTECHNIZ: NIZUMAB
+(Version centrée sur la production)
+(Faire une version alternative centrée sur le CPNPC PD1+, au cas où une intro plus axée épidemio/santé serait le mieux)
+
+### Chapitre 1 : Fondements théoriques
+
+#### Section 1 : Présentation des chaînes d'approvisionnement pharmaceutiques
+
+Les chaînes d'approvisionnement pharmaceutiques jouent un rôle vital dans la fourniture efficace et sécurisée de médicaments et de vaccins à travers l'europe, un domaine où la pandémie de COVID-19 a mis en évidence à la fois la robustesse et les vulnérabilités· Selon une étude récente de l'Agence européenne des médicaments (eMA), les chaînes d'approvisionnement pharmaceutiques de l'Ue sont caractérisées par une grande complexité, impliquant une multitude d'acteurs [1]·
+
+Le fonctionnement de ces chaînes repose sur une synchronisation minutieuse entre les différents maillons· Les fabricants de médicaments et de vaccins, tels que Pfizer-BioNTech et AstraZeneca, sont responsables de la production des produits pharmaceutiques, tandis que les fournisseurs de matières premières, tels que Roche et BASF, assurent un approvisionnement constant en ingrédients critiques [2]· Les prestataires logistiques tels que DHL et UPS se chargent ensuite du transport et du stockage des produits pharmaceutiques, en garantissant le respect des normes de qualité et de sécurité [3]·
+
+Les distributeurs jouent un rôle crucial dans la mise à disposition des médicaments aux points de vente· Des entreprises comme McKesson europe et Walgreens Boots Alliance sont des acteurs majeurs dans la distribution pharmaceutique en europe [4]· Parallèlement, les organismes de régulation tels que l'Agence européenne des médicaments (eMA) et les agences nationales de régulation veillent à ce que les produits pharmaceutiques respectent les normes de qualité, de sécurité et d'efficacité établies [5]·
+
+ensemble, ces acteurs travaillent en étroite collaboration pour garantir la disponibilité et l'accessibilité des produits pharmaceutiques dans toute l'europe, contribuant ainsi à la protection de la santé publique et à la lutte contre les maladies·
+
+[1· european Medicines Agency (eMA), "Supply chain security and resilience of medicinal products for human use in the eU - Guidance for industry", 2021]
+[2· european Federation of Pharmaceutical Industries and Associations (eFPIA), "Pharmaceutical Supply Chain in europe", 2020]
+[3· DHL, "DHL Supply Chain secures a contract with AstraZeneca to manage pharmaceutical warehousing operations in europe", 2021]
+[4· McKesson europe, "Our Businesses", Accessed January 2024]
+[5· european Medicines Agency (eMA), "About us", Accessed January 2024]
+
+
+
+
+
+#### Section 2 : Bonnes pratiques de fabrication (BPF) et galénique pharmaceutique
+
+Les bonnes pratiques de fabrication (BPF) représentent un pilier fondamental de l'industrie pharmaceutique européenne, garantissant la qualité, la sécurité et l'efficacité des médicaments et des vaccins produits· en conformité avec les directives de l'Agence européenne des médicaments (eMA) et d'autres organismes de réglementation, les entreprises pharmaceutiques telles que Novartis et Sanofi intègrent rigoureusement les BPF dans leurs processus de fabrication [6]· Ces normes couvrent divers aspects de la production, y compris la qualité des matières premières, les installations de production, le contrôle qualité et les procédures de suivi et de traçabilité [7]·
+
+La galénique pharmaceutique, qui englobe la conception et la formulation des médicaments, joue également un rôle crucial dans la chaîne d'approvisionnement pharmaceutique· Les entreprises telles que GlaxoSmithKline et Bayer investissent dans la recherche et le développement de formulations innovantes pour optimiser la stabilité, la biodisponibilité et l'administration des médicaments [8]· Cette optimisation de la galénique contribue à améliorer l'efficacité des processus de production et de distribution, réduisant ainsi les coûts et les délais·
+
+L'application des BPF et l'accent mis sur la galénique pharmaceutique dans l'industrie européenne renforcent la robustesse des chaînes d'approvisionnement pharmaceutiques, en garantissant la qualité et la disponibilité des produits pharmaceutiques essentiels·
+
+[6· european Medicines Agency (eMA), "Good manufacturing practice (GMP)", Accessed January 2024]
+[7· european Directorate for the Quality of Medicines & HealthCare (eDQM), "Good manufacturing practices (GMP) inspection programme", Accessed January 2024]
+[8· Bayer AG, "Formulation Development", Accessed January 2024]
+
+
+
+Section 3 : Gestion de la qualité et utilisation de la technologie blockchain
+La gestion de la qualité est une préoccupation majeure de l'industrie pharmaceutique européenne, où la sécurité et l'efficacité des produits sont des priorités absolues· Les entreprises telles que Novartis et Roche mettent en œuvre des programmes de contrôle qualité sophistiqués, comprenant des tests approfondis des matières premières, des processus de fabrication et des produits finis [9]·
+
+La technologie blockchain émerge comme une solution prometteuse pour renforcer la gestion de la qualité dans l'industrie pharmaceutique européenne· Selon une étude de Deloitte, 60% des entreprises pharmaceutiques européennes envisagent d'investir dans la blockchain pour améliorer la gestion de la qualité et renforcer la confiance des consommateurs [11]· La blockchain offre un registre décentralisé et inviolable des transactions, permettant une traçabilité complète et transparente des produits pharmaceutiques tout au long de leur cycle de vie· Cette transparence accrue peut contribuer à réduire les erreurs de gestion et à améliorer l'efficacité opérationnelle· De plus, selon une étude de McKinsey, l'adoption généralisée de la blockchain dans l'industrie pharmaceutique européenne pourrait entraîner une réduction de 50% des coûts associés aux erreurs de gestion et aux rappels de produits [12]·
+
+en outre, la blockchain offre une solution efficace pour lutter contre la contrefaçon de médicaments, un problème majeur qui menace la sécurité des patients· Selon l'Organisation mondiale de la santé (OMS), la contrefaçon de médicaments représente environ 10% du marché pharmaceutique mondial, avec des coûts estimés à près de 200 milliards de dollars chaque année [13]·
+
+L'intégration de la technologie blockchain dans la gestion de la qualité offre une perspective prometteuse pour renforcer la résilience des chaînes d'approvisionnement pharmaceutiques en période de pandémie· en garantissant la traçabilité et la transparence des produits pharmaceutiques, la blockchain peut jouer un rôle crucial dans la gestion des crises sanitaires en assurant la disponibilité continue des produits essentiels pour la santé publique·
+
+[9· european Medicines Agency (eMA), "Good manufacturing practice (GMP)", Accessed January 2024]
+[11· Deloitte, "Blockchain in the pharmaceutical industry", 2023]
+[12· McKinsey & Company, "Blockchain beyond the hype: What is the strategic business value?", 2022]
+[13· World Health Organization (WHO), "Counterfeit medicines: an update on estimates", 2019] 
