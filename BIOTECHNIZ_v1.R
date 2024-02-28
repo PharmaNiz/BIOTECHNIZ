@@ -64,8 +64,8 @@ NbrDeCentresLAC<-c(18)
 interarrival_time <- c(30 * 24 * 60 / NbrDeCentresLAC*4)#Minutes(4 fois par mois/1 par semaine) (a adapter en fonction de l'epidemio/demande)
 
 
-CustArr <- function() { interarrival_time}
-NewCustArr <- function() { interarrival_time}
+CustArr <- function() interarrival_time
+NewCustArr <- function() interarrival_time
 
 #Les 18 centres se partagent les patients equitablement
 #Donc les valeurs des seize ... = Prevalence/(Mois*18)
