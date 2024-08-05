@@ -17,7 +17,7 @@ for (i in 1:DSM) {Incidence_Patients[i]<-18000} #Incidence_Patients En milliers,
 Incidence_Patients_Mois<-c(Incidence_Patients/12)
 
 
-Prevalence_Patients <-c() #Augmente chaque mois ccar les Patients incidéents deviennent Prévalents
+Prevalence_Patients <-c() #Augmente chaque mois car les Patients incidéents deviennent Prévalents
 Prevalence_Patients[1] <-90000
 for (i in 2:DSM){Prevalence_Patients[i] <- (Prevalence_Patients[i - 1] + Incidence_Patients)}
 
@@ -61,11 +61,11 @@ AQ_Time <-c(2 * 60)            #Durée de la demarche qualité en sortie de chai
 #On considère qu'il y a un nombre égal de patients par region
 
 NbrDeCentresLAC<-c(18)
-interarrival_time <- c(30 * 24 * 60 / NbrDeCentresLAC*4)#Minutes(4 fois par mois/1 par semaine) (a adapter en fonction de l'epidemio/demande)
+#interarrival_time <- c(30 * 24 * 60 * NbrDeCentresLAC*4)#Minutes(4 fois par mois/1 par semaine) (a adapter en fonction de l'epidemio/demande)
 
 
-CustArr <- function() interarrival_time
-NewCustArr <- function() interarrival_time
+CustArr <- rexp(1, DD) * 480
+NewCustArr <- rexp(1, DD) * 480
 
 #Les 18 centres se partagent les patients equitablement
 #Donc les valeurs des seize ... = Prevalence/(Mois*18)
